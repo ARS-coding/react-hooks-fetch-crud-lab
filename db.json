@@ -9,7 +9,7 @@
         "key",
         "prop"
       ],
-      "correctIndex": 2
+      "correctIndex": "0"
     },
     {
       "id": 2,
@@ -65,17 +65,6 @@
         "controlled"
       ],
       "correctIndex": 1
-    },
-    {
-      "prompt": "asd",
-      "answers": [
-        "asd",
-        "la",
-        "sad",
-        "ads"
-      ],
-      "corrrectIndex": "1",
-      "id": 7
     }
   ]
 }

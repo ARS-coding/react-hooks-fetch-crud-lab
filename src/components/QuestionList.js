@@ -12,12 +12,13 @@ function QuestionList({URL}) {
     }
     fetchData();
   }, []);
+  
 
 
   return (
     <section>
       <h1>Quiz Questions</h1>
-      <ul>{questionData.map((questionObj, index) => <QuestionItem key={index} question={questionObj} />)}</ul>
+      <ul>{questionData.map((questionObj, index) => <QuestionItem key={index} question={questionObj} URL={URL} />)}</ul>
     </section>
   );
 }

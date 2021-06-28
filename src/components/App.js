@@ -4,13 +4,14 @@ import QuestionForm from "./QuestionForm";
 import QuestionList from "./QuestionList";
 
 function App() {
-  const [page, setPage] = useState("List");
+  const [page, setPage] = useState("");
   const URL = "http://localhost:3000/questions";
 
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
-      {page === "Form" ? <QuestionForm URL={URL} /> : <QuestionList URL={URL} />}
+      {page === "Form" ? <QuestionForm URL={URL} /> : null}
+      {page === "List" ? <QuestionList URL={URL} /> : null}
     </main>
   );
 }

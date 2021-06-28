@@ -33,7 +33,7 @@ function QuestionForm({URL}) {
         corrrectIndex: formData.correctIndex
       })
     }
-    fetch(URL, configurationObj).then(resp => console.log(resp));
+    fetch(URL, configurationObj);
   }
 
   return (
