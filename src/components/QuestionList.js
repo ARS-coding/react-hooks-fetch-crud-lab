@@ -1,17 +1,16 @@
 import React, {useState, useEffect} from "react";
 import QuestionItem from "./QuestionItem";
 
-function QuestionList() {
+function QuestionList({URL}) {
 
   const [questionData, setQuestionData] = useState([]);
 
   useEffect(() => {
-    const URL = "http://localhost:3000/questions";
-    async function fetchData(URL) {
+    async function fetchData() {
       const json = await fetch(URL).then(response => response.json());
       setQuestionData(json);
     }
-    fetchData(URL);
+    fetchData();
   }, []);
 
 

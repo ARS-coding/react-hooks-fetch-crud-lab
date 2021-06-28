@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function QuestionForm(props) {
+function QuestionForm({URL}) {
   const [formData, setFormData] = useState({
     prompt: "",
     answer1: "",
@@ -13,13 +13,27 @@ function QuestionForm(props) {
   function handleChange(event) {
     setFormData({
       ...formData,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(formData);
+    const configurationObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        prompt: formData.prompt,
+        answers: [
+          formData.answer1,formData.answer2, formData.answer3, formData.answer4
+        ],
+        corrrectIndex: formData.correctIndex
+      })
+    }
+    fetch(URL, configurationObj).then(resp => console.log(resp));
   }
 
   return (
