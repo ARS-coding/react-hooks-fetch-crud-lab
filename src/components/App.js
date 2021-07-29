@@ -9,7 +9,7 @@ function App() {
 
   return (
     <main>
-      <AdminNavBar onChangePage={setPage} />
+      <AdminNavBar setPage={setPage} />
       {page === "Form" ? <QuestionForm URL={URL} /> : null}
       {page === "List" ? <QuestionList URL={URL} /> : null}
     </main>
