@@ -1,15 +1,15 @@
 import React from "react";
 
-function QuestionItem({ question, URL, setIsQuestionDeleted }) { // question obj
+function QuestionItem({ question, URL, setIsQuestionDeleted }) {
   const { id, prompt, answers, correctIndex } = question;
 
   const options = answers.map((answer, index) => (
     <option key={index} value={index}>
       {answer}
     </option>
-  ));
+  )); // create the answer options for the individual question
 
-  function handleSelectChange(event) {
+  function handleSelectChange(event) { // make a HTTP PATCH request to change the correct answers index on the server 
     const changedCorrectIndex = event.target.value;
     const configurationObj = {
       method: "PATCH",
@@ -30,7 +30,7 @@ function QuestionItem({ question, URL, setIsQuestionDeleted }) { // question obj
         "Accept": "application/json"
       }
     }
-    fetch(`${URL}/${id}`, configurationObj).then(resp=>console.log(resp));
+    fetch(`${URL}/${id}`, configurationObj).then(resp => console.log(resp));
   }
 
   return (

@@ -5,7 +5,7 @@ import QuestionList from "./QuestionList";
 
 function App() {
   const [page, setPage] = useState("");
-  const URL = "http://localhost:3000/questions";
+  const URL = "http://localhost:4000/questions";
 
   return (
     <main>
