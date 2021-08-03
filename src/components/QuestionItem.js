@@ -1,6 +1,6 @@
 import React from "react";
 
-function QuestionItem({ question, URL, setIsQuestionDeleted }) {
+function QuestionItem({ question, URL, questionData, setQuestionData }) {
   const { id, prompt, answers, correctIndex } = question;
 
   const options = answers.map((answer, index) => (
@@ -19,10 +19,13 @@ function QuestionItem({ question, URL, setIsQuestionDeleted }) {
       },
       body: JSON.stringify({correctIndex: changedCorrectIndex})
     };
-    fetch(`${URL}/${id}`, configurationObj).then(resp => console.log(resp))
+    fetch(`${URL}/${id}`, configurationObj)
   }
 
   function deleteQuestion() {
+    const questionDataCopy = [...questionData];
+    questionDataCopy.splice(id - 1, 1)
+    setQuestionData(questionDataCopy)
     const configurationObj = {
       method: "DELETE",
       headers: {
@@ -30,7 +33,7 @@ function QuestionItem({ question, URL, setIsQuestionDeleted }) {
         "Accept": "application/json"
       }
     }
-    fetch(`${URL}/${id}`, configurationObj).then(resp => console.log(resp));
+    fetch(`${URL}/${id}`, configurationObj);
   }
 
   return (

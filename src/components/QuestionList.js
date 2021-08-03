@@ -5,15 +5,17 @@ function QuestionList({URL}) {
 
   const [questionData, setQuestionData] = useState([]);
 
-  useEffect(() => {
+  useEffect(async () => {
     async function fetchData() {
       const json = await fetch(URL).then(response => response.json());
       setQuestionData(json);
     }
-    fetchData();
+    await fetchData();
   }, []);
   
-  console.log(questionData)
+  // update the state also
+
+  // console.log(questionData)
 
   return (
     <section>
@@ -26,6 +28,8 @@ function QuestionList({URL}) {
                 key={index}
                 question={questionObj}
                 URL={URL}
+                questionData={questionData}
+                setQuestionData={setQuestionData}
               />
             );
           })
